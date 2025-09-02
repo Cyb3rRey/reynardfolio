@@ -1,8 +1,258 @@
 <!doctype html>
-<html>
-<head><meta charset="utf-8"><title>Reynard Dahunan</title></head>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Reynard Dahunan — Portfolio</title>
+<meta name="description" content="Reynard Dahunan — IT Professional. Portfolio, projects, and contact." />
+<style>
+  :root{
+    --bg:#0f1724; --card:#0b1220; --muted:#9aa4b2; --accent:#6ee7b7;
+    --glass: rgba(255,255,255,0.04);
+    --maxw:1100px; --radius:12px;
+    color-scheme: dark;
+  }
+  :root.light{
+    --bg:#f6f8fb; --card:#ffffff; --muted:#556070; --accent:#0b7f6b; --glass: rgba(0,0,0,0.04);
+    color-scheme: light;
+  }
+
+  *{box-sizing:border-box}
+  html,body{height:100%}
+  body{
+    margin:0; font-family:Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+    background:linear-gradient(180deg,var(--bg), #071022 120%);
+    color: #e6eef6; -webkit-font-smoothing:antialiased;
+    padding:32px; display:flex; align-items:flex-start; justify-content:center;
+  }
+
+  .wrap{width:100%;max-width:var(--maxw);}
+
+  header{
+    display:flex; align-items:center; justify-content:space-between; gap:16px; margin-bottom:28px;
+  }
+  .brand{display:flex;gap:12px;align-items:center}
+  .logo{
+    width:56px;height:56px;border-radius:12px;background:linear-gradient(135deg,var(--accent),#3dd9b0);
+    display:grid;place-items:center;font-weight:700;color:#04211a;
+    box-shadow:0 6px 18px rgba(2,6,23,0.6);
+  }
+  .brand h1{font-size:16px;margin:0}
+  .brand p{margin:0;font-size:13px;color:var(--muted)}
+
+  nav{display:flex;align-items:center;gap:10px;}
+  .btn{
+    background:var(--glass); border:1px solid rgba(255,255,255,0.04);
+    padding:8px 12px;border-radius:10px;color:var(--muted);text-decoration:none;font-size:14px;
+  }
+  .btn.primary{background:linear-gradient(90deg,var(--accent),#3dd9b0);color:#02332a;border:none;font-weight:600}
+  .theme-toggle{cursor:pointer;padding:8px;border-radius:8px;display:inline-grid;place-items:center}
+
+  main{display:grid;gap:28px}
+  .hero{
+    display:grid;grid-template-columns:1fr 320px;gap:28px;align-items:center;
+    background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+    border-radius:var(--radius); padding:28px; box-shadow:0 10px 30px rgba(2,6,23,0.5);
+  }
+
+  .intro h2{margin:0 0 8px 0;font-size:28px}
+  .intro p.lead{margin:0 0 16px 0;color:var(--muted);line-height:1.5}
+  .cta-row{display:flex;gap:12px;flex-wrap:wrap}
+  .chip{background:rgba(255,255,255,0.03);padding:6px 10px;border-radius:999px;font-size:13px;color:var(--muted)}
+
+  .profile{
+    background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+    border-radius:12px;padding:16px;text-align:center;
+  }
+  .avatar{width:120px;height:120px;border-radius:14px;margin:0 auto 12px;background:linear-gradient(180deg,#123,#456);display:grid;place-items:center;font-weight:700;color:white;font-size:36px}
+  .profile h3{margin:6px 0 0 0}
+  .profile p{margin:6px 0;color:var(--muted);font-size:14px}
+
+  .grid{
+    display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:18px;
+  }
+  .card{
+    background:var(--card);border-radius:12px;padding:16px;border:1px solid rgba(255,255,255,0.02);
+  }
+  .projects .card img{width:100%;height:140px;object-fit:cover;border-radius:8px;margin-bottom:12px;background:#0a0c10}
+  .card h4{margin:0 0 6px 0}
+  .card p{margin:0;color:var(--muted);font-size:14px}
+
+  footer{margin-top:18px;color:var(--muted);font-size:13px;display:flex;justify-content:space-between;gap:12px;align-items:center}
+
+  /* contact form */
+  .contact{
+    display:grid;grid-template-columns:1fr 320px;gap:20px;
+  }
+  form{display:grid;gap:12px}
+  input,textarea{
+    padding:12px;border-radius:10px;border:1px solid rgba(255,255,255,0.04);background:transparent;color:inherit;font-size:14px;
+  }
+  textarea{min-height:120px;resize:vertical}
+  .small{font-size:13px;color:var(--muted)}
+
+  /* responsive */
+  @media (max-width:880px){
+    .hero{grid-template-columns:1fr; padding:20px}
+    .contact{grid-template-columns:1fr}
+  }
+
+  /* subtle focus */
+  a:focus,button:focus,input:focus,textarea:focus{outline:3px solid rgba(109,199,178,0.12);outline-offset:2px}
+</style>
+</head>
 <body>
-  <h1>Reynard Dahunan — IT Professional</h1>
-  <p>Welcome to my portfolio.</p>
+  <div class="wrap">
+    <header>
+      <div class="brand">
+        <div class="logo">RD</div>
+        <div>
+          <h1>Reynard Dahunan</h1>
+          <p>IT Professional • Security-minded • Developer</p>
+        </div>
+      </div>
+
+      <nav>
+        <a class="btn" href="#about">About</a>
+        <a class="btn" href="#projects">Projects</a>
+        <a class="btn" href="#contact">Contact</a>
+        <button id="themeToggle" class="btn theme-toggle" title="Toggle theme">🌓</button>
+      </nav>
+    </header>
+
+    <main>
+      <section class="hero" aria-labelledby="hero-heading">
+        <div class="intro">
+          <h2 id="hero-heading">Hello — I'm Reynard Dahunan</h2>
+          <p class="lead">IT Professional specializing in systems, security, and scalable web solutions. I build secure, maintainable projects and love solving tough infrastructure problems.</p>
+
+          <div class="cta-row" role="list">
+            <a class="btn primary" href="#projects">View projects</a>
+            <a class="btn" href="#contact">Hire / Contact</a>
+            <span class="chip">Privacy-aware</span>
+            <span class="chip">Cloud & DevOps</span>
+          </div>
+
+          <div style="margin-top:18px">
+            <h4 style="margin:0 0 8px 0">Quick links</h4>
+            <div style="display:flex;gap:8px;flex-wrap:wrap">
+              <a class="btn" href="https://github.com/Cyb3rRey" target="_blank" rel="noopener">GitHub</a>
+              <a class="btn" href="#" target="_blank" rel="noopener">LinkedIn</a>
+              <a class="btn" href="#" target="_blank" rel="noopener">Resume</a>
+            </div>
+          </div>
+        </div>
+
+        <aside class="profile" aria-label="Profile card">
+          <div class="avatar" aria-hidden="true">RD</div>
+          <h3>Reynard Dahunan</h3>
+          <p>Systems engineer • Security • Cloud</p>
+          <p style="margin-top:10px" class="small">Admin: <code>rdahunan0</code></p>
+        </aside>
+      </section>
+
+      <section id="about" class="card" aria-labelledby="about-heading">
+        <h3 id="about-heading">About</h3>
+        <p class="small">I’m an IT professional with experience in system administration, cloud platforms, and security. I follow data privacy best practices and design systems with least-privilege and observability in mind.</p>
+
+        <div style="margin-top:12px" class="grid">
+          <div class="card">
+            <h4>Skills</h4>
+            <p class="small">Linux, Docker, Kubernetes, Terraform, CI/CD, Python, Bash, Monitoring, Security auditing.</p>
+          </div>
+          <div class="card">
+            <h4>Approach</h4>
+            <p class="small">Automation-first, secure-by-default, and documentation-driven. I prefer reproducible infrastructure and minimal, tested changes.</p>
+          </div>
+        </div>
+      </section>
+
+      <section id="projects" class="projects">
+        <h3 style="margin:0 0 12px 0">Selected projects</h3>
+        <div class="grid">
+          <article class="card">
+            <img alt="Project screenshot placeholder" src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='1200' height='600'><rect width='100%' height='100%' fill='%230a0f1a'/><text x='50%' y='50%' fill='%238a9aa6' font-size='28' font-family='Arial' dominant-baseline='middle' text-anchor='middle'>Project screenshot</text></svg>">
+            <h4>Secure CI/CD Pipeline</h4>
+            <p class="small">Designed an automated pipeline with security gates, SAST, and deploy-time approvals for multiple environments.</p>
+            <p style="margin-top:10px"><a class="btn" href="#" target="_blank" rel="noopener">View repo</a></p>
+          </article>
+
+          <article class="card">
+            <img alt="Project screenshot placeholder" src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='1200' height='600'><rect width='100%' height='100%' fill='%2312151b'/><text x='50%' y='50%' fill='%238a9aa6' font-size='28' font-family='Arial' dominant-baseline='middle' text-anchor='middle'>Project screenshot</text></svg>">
+            <h4>Monitoring & Observability</h4>
+            <p class="small">Implemented centralized logging and metrics with dashboards and alerting for high-severity incidents.</p>
+            <p style="margin-top:10px"><a class="btn" href="#" target="_blank" rel="noopener">Read case study</a></p>
+          </article>
+
+          <article class="card">
+            <img alt="Project screenshot placeholder" src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='1200' height='600'><rect width='100%' height='100%' fill='%230f1724'/><text x='50%' y='50%' fill='%238a9aa6' font-size='28' font-family='Arial' dominant-baseline='middle' text-anchor='middle'>Project screenshot</text></svg>">
+            <h4>Personal Portfolio Build</h4>
+            <p class="small">This site — static, privacy-conscious, and deployed with Cloudflare Pages. Minimal analytics; contact via email only.</p>
+            <p style="margin-top:10px"><a class="btn" href="#" target="_blank" rel="noopener">Live demo</a></p>
+          </article>
+        </div>
+      </section>
+
+      <section id="contact" class="card">
+        <h3>Contact</h3>
+        <div class="contact">
+          <form id="contactForm" onsubmit="return sendEmail(event)">
+            <label class="small">Your name
+              <input name="name" type="text" required placeholder="Your full name">
+            </label>
+            <label class="small">Your email
+              <input name="email" type="email" required placeholder="you@example.com">
+            </label>
+            <label class="small">Message
+              <textarea name="message" required placeholder="Tell me about your project or job opportunity..."></textarea>
+            </label>
+            <div style="display:flex;gap:8px;align-items:center">
+              <button class="btn primary" type="submit">Send email</button>
+              <div class="small" style="color:var(--muted)">Or email directly: <a href="mailto:rdahunan0@proton.me" style="color:var(--accent)">rdahunan0@proton.me</a></div>
+            </div>
+          </form>
+
+          <aside style="padding:10px;border-left:1px solid rgba(255,255,255,0.02)">
+            <h4 style="margin-top:0">Availability</h4>
+            <p class="small">Open to freelance and full-time roles. I respond within a few business days.</p>
+
+            <h4 style="margin-top:12px">Privacy note</h4>
+            <p class="small">Messages are forwarded to my email. I do not share personal data and comply with applicable data privacy laws.</p>
+          </aside>
+        </div>
+      </section>
+
+      <footer>
+        <div>© <strong>Reynard Dahunan</strong> — RDahunan0</div>
+        <div class="small">Built with care • Hosted on Cloudflare Pages</div>
+      </footer>
+    </main>
+  </div>
+
+<script>
+  // theme toggle
+  const root = document.documentElement;
+  const saved = localStorage.getItem('theme');
+  if(saved === 'light') root.classList.add('light');
+
+  document.getElementById('themeToggle').addEventListener('click', () => {
+    root.classList.toggle('light');
+    localStorage.setItem('theme', root.classList.contains('light') ? 'light' : 'dark');
+  });
+
+  // simple contact form: open mailto with filled content (no backend)
+  function sendEmail(e){
+    e.preventDefault();
+    const f = e.target;
+    const name = encodeURIComponent(f.name.value.trim());
+    const email = encodeURIComponent(f.email.value.trim());
+    const msg = encodeURIComponent(f.message.value.trim());
+    const subject = encodeURIComponent('Portfolio contact from ' + (f.name.value || 'Website visitor'));
+    const body = encodeURIComponent(`Name: ${f.name.value}\nEmail: ${f.email.value}\n\n${f.message.value}`);
+    const mailto = `mailto:rdahunan0@proton.me?subject=${subject}&body=${body}`;
+    window.location.href = mailto;
+    return false;
+  }
+</script>
 </body>
 </html>
